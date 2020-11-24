@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stonks_app/home/widgets/customAlertBadget.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   @override
@@ -18,23 +19,7 @@ class CustomBottomNavBar extends StatelessWidget {
           icon: Stack(
               children: <Widget>[
                 Icon(Icons.alternate_email),
-                Positioned(
-                    right: 0,
-                    top: 0,
-                    child: Container(
-                      padding: EdgeInsets.all(2),
-                      height: 14,
-                      width: 14,
-                      decoration: new BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(9),
-                      ),
-                      constraints: BoxConstraints(
-                        minWidth: 14,
-                        minHeight: 14,
-                      ),
-                      child: Text('8', textAlign: TextAlign.center, textScaleFactor: 0.7, style: TextStyle(color: Colors.white),),
-                    ))
+                CustomAlertBadget(alertNumber: 8,)
               ]
           ),
           title: Text('MENTIONS'),

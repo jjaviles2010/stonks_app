@@ -163,8 +163,8 @@ class HomeScreen extends StatelessWidget {
     return [
       Stock('PayPal', 'images/paypal.png', 'Brooklyn Simmons: Just confirming that...', 3.6, 5, 243.66, 18923, null),
       Stock('Twitter', 'images/twitter.png', 'Dianne Russell: Sell my October 1400 an...', -1.4, 3, 567.73, 20754, null),
-      Stock('Testla', 'images/tesla.png', 'Ronald Richards: Tesla Accusses Rivian of...', -1.4, 3, 567.73, 20754, null),
-      Stock('Facebook', 'images/facebook.png', 'Albert Flores: Wow, after listening to the...', -1.4, 3, 567.73, 20754, null),
+      Stock('Testla', 'images/tesla.png', 'Ronald Richards: Tesla Accusses Rivian of...', -1.4, 0, 567.73, 20754, null),
+      Stock('Facebook', 'images/facebook.png', 'Albert Flores: Wow, after listening to the...', -1.4, 0, 567.73, 20754, null),
     ];
   }
 }
