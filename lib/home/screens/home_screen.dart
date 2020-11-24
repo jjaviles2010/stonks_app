@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stonks_app/home/widgets/customAppBar.dart';
+import 'package:stonks_app/home/widgets/customBottomNavBar.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }
