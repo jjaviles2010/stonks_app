@@ -6,4 +6,6 @@ class Post {
   List<Reaction> reactions;
   List<Post> replies;
   bool unread;
+
+  Post(this.idUser, this.postTime, this.reactions, this.replies, this.unread);
 }

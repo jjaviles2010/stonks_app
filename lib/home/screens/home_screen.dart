@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:stonks_app/config/style.dart';
+import 'package:stonks_app/home/models/stock.dart';
 import 'package:stonks_app/home/widgets/customAppBar.dart';
 import 'package:stonks_app/home/widgets/customBottomNavBar.dart';
+import 'package:stonks_app/home/widgets/portfolioItem.dart';
 import 'package:stonks_app/home/widgets/stackedChart.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -15,13 +17,17 @@ class HomeScreen extends StatelessWidget {
   }
 
   getHomeData() {
-    return ListView(
-      children: <Widget>[
-        _walletPosition(),
-        _buildChart(),
-        _buyingPower(),
-        //_getPortofolio(),
-      ],
+    return Container(
+      color: Colors.white,
+      child: ListView(
+        children: <Widget>[
+          _walletPosition(),
+          _buildChart(),
+          _buyingPower(),
+          _buildPortfolioHeader(),
+          _getPortofolio(),
+        ],
+      ),
     );
   }
 
@@ -117,7 +123,7 @@ class HomeScreen extends StatelessWidget {
 
   _buyingPower() {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -133,7 +139,32 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  _getPortofolio() {
+  _buildPortfolioHeader() {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        child: Text('Portfolio', style: TextStyles.blackBoldText,),
+      ),
+    );
+  }
 
+  Column _getPortofolio() {
+    List<Stock> stocksGroup = _populateStocks();
+    List<Widget> portfolioItem = [];
+
+    stocksGroup.forEach((stock) {
+      portfolioItem.add(PortfolioItem(stock: stock,));
+    });
+
+    return Column(children: portfolioItem,);
+  }
+
+  List<Stock> _populateStocks() {
+    return [
+      Stock('PayPal', 'images/paypal.png', 'Brooklyn Simmons: Just confirming that...', 3.6, 5, 243.66, 18923, null),
+      Stock('Twitter', 'images/twitter.png', 'Dianne Russell: Sell my October 1400 an...', -1.4, 3, 567.73, 20754, null),
+      Stock('Testla', 'images/tesla.png', 'Ronald Richards: Tesla Accusses Rivian of...', -1.4, 3, 567.73, 20754, null),
+      Stock('Facebook', 'images/facebook.png', 'Albert Flores: Wow, after listening to the...', -1.4, 3, 567.73, 20754, null),
+    ];
   }
 }

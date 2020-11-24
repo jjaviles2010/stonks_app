@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:stonks_app/home/models/linearWalletPosition.dart';
 
 class StackedChart extends StatelessWidget {
 
@@ -44,11 +45,4 @@ class StackedChart extends StatelessWidget {
       ),
     ];
   }
-}
-
-class LinearWalletPosition {
-  final int time;
-  final int position;
-
-  LinearWalletPosition(this.time, this.position);
 }

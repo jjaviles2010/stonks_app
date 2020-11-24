@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stonks_app/home/widgets/customImage.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSize {
   @override
@@ -36,20 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
   }
 
   _getProfileImage() {
-     return CircleAvatar(
-      child: Container(
-          width: 150.0,
-          height: 150.0,
-          decoration: new BoxDecoration(
-              shape: BoxShape.circle,
-              image: new DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('images/Mask.png')
-              )
-          )),
-      foregroundColor: Colors.white,
-      backgroundColor: Colors.transparent,
-    );
+     return CustomImage(imageSrc: 'images/Mask.png',);
   }
 
   @override
