@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stonks_app/config/style.dart';
 import 'package:stonks_app/home/widgets/customAppBar.dart';
 import 'package:stonks_app/home/widgets/customBottomNavBar.dart';
+import 'package:stonks_app/home/widgets/stackedChart.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class HomeScreen extends StatelessWidget {
     return ListView(
       children: <Widget>[
         _walletPosition(),
-        // _graphData(),
+        _buildChart(),
         _buyingPower(),
         _getPortofolio(),
       ],
@@ -57,6 +58,20 @@ class HomeScreen extends StatelessWidget {
               Text('\$330,961%', style: TextStyles.blackBoldText, )
             ],
           )
+        ],
+      ),
+    );
+  }
+
+  _buildChart() {
+    return Container(
+      padding: EdgeInsets.all(12),
+      child: Column(
+        children: <Widget>[
+          Container(
+              height: 250,
+              child: StackedChart()
+          ),
         ],
       ),
     );
