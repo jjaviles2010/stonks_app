@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         _walletPosition(),
         _buildChart(),
         _buyingPower(),
-        _getPortofolio(),
+        //_getPortofolio(),
       ],
     );
   }
@@ -72,6 +72,44 @@ class HomeScreen extends StatelessWidget {
               height: 250,
               child: StackedChart()
           ),
+          ButtonBar(
+            alignment: MainAxisAlignment.spaceEvenly,
+            buttonPadding: EdgeInsets.only(left: 2, right: 2),
+            buttonHeight: 4,
+            buttonMinWidth: 4,
+            children: <Widget>[
+              FlatButton(
+                child: Text('1D', textScaleFactor: 0.9,),
+                color: Colors.green,
+                onPressed: () { },
+              ),
+              FlatButton(
+                child: Text('1W', textScaleFactor: 0.9, style: TextStyles.greenText,),
+                color: Colors.white,
+                onPressed: () { },
+              ),
+              FlatButton(
+                child: Text('1M', textScaleFactor: 0.9, style: TextStyles.greenText),
+                color: Colors.white,
+                onPressed: () { },
+              ),
+              FlatButton(
+                child: Text('3M', textScaleFactor: 0.9, style: TextStyles.greenText),
+                color: Colors.white,
+                onPressed: () { },
+              ),
+              FlatButton(
+                child: Text('1Y', textScaleFactor: 0.9, style: TextStyles.greenText),
+                color: Colors.white,
+                onPressed: () { },
+              ),
+              FlatButton(
+                child: Text('ALL', textScaleFactor: 0.9, style: TextStyles.greenText),
+                color: Colors.white,
+                onPressed: () { },
+              ),
+            ],
+          )
         ],
       ),
     );

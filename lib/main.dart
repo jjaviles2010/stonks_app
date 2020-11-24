@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         // Define the default brightness and colors.
         brightness: Brightness.light,
         primaryColor: Colors.lightBlue[50],
-        accentColor: Colors.cyan[600],
+        accentColor: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
