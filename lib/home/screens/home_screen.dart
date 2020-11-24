@@ -18,7 +18,8 @@ class HomeScreen extends StatelessWidget {
       children: <Widget>[
         _walletPosition(),
         // _graphData(),
-        _buyingPower()
+        _buyingPower(),
+        _getPortofolio(),
       ],
     );
   }
@@ -77,5 +78,9 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _getPortofolio() {
+
   }
 }
