@@ -52,6 +52,12 @@ flutter:
     - images/paypal.png
     - images/tesla.png
     - images/twitter.png
+    - images/albert.png
+    - images/annette.png
+    - images/arlene.png
+    - images/jerome.png
+    - images/ronald.png
+    - images/woman.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

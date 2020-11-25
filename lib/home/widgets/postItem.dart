@@ -14,7 +14,7 @@ class PostItem extends StatelessWidget {
       padding: EdgeInsets.all(8.0),
       child: Row(
         children: <Widget>[
-          CustomImage(imageSrc: 'images/Mask.png',),
+          CustomImage(imageSrc: post.userImg,),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
