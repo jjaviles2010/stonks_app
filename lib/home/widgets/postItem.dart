@@ -13,6 +13,7 @@ class PostItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, right: 8.0, left: 8.0),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -35,6 +36,20 @@ class PostItem extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 4.0),
                   child: Text(post.postText, overflow: TextOverflow.ellipsis, maxLines: 5,),
+                ),
+                Wrap(
+                  children: <Widget>[
+                    ButtonBar(
+                      alignment: MainAxisAlignment.start,
+                      buttonPadding: EdgeInsets.all(0),
+                      buttonHeight: 2,
+                      buttonMinWidth: 2,
+                      children: <Widget>[
+                        IconButton(icon: Icon(Icons.insert_emoticon), onPressed: () {}, color: Colors.grey,),
+                        IconButton(icon: Icon(Icons.chat_bubble_outline), onPressed: () {}, color: Colors.grey,)
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),

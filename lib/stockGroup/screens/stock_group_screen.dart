@@ -46,7 +46,8 @@ class _StockGroupScreenState extends State<StockGroupScreen> {
     postWidgets.addAll(_getReadPosts());
     postWidgets.add(_buildDivider());
     postWidgets.addAll(_getUnreadPosts());
-
+    postWidgets.add(SizedBox(height: 80,));
+    
     return postWidgets;
   }
 
