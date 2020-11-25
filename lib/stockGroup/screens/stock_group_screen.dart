@@ -19,10 +19,16 @@ class StockGroupScreen extends StatelessWidget {
   }
 
   _buildPostsList() {
-    return Container(
-      child: ListView(
-        children: _populatePosts(),
-      ),
+    return Stack(
+      children: [
+        ListView(
+          children: _populatePosts(),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: _buildTextField(),
+        ),
+      ],
     );
   }
 
@@ -76,5 +82,37 @@ class StockGroupScreen extends StatelessWidget {
     });
 
     return postWidgets;
+  }
+
+  _buildTextField() {
+    return Container(
+      padding: EdgeInsets.only(left: 8.0, right: 8.0),
+      color: Colors.grey[50],
+      child: Row(children: <Widget>[
+        Flexible(
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Type a Message',
+                helperText: '',
+                contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                counterText: "",
+                filled: false,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(width: 1.0, color: Colors.grey),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+              ),
+            )
+        ),
+      ],),
+    );
   }
 }
