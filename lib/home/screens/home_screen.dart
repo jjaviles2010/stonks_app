@@ -173,9 +173,9 @@ class HomeScreen extends StatelessWidget {
                 'Who cares if its a bubble? Ride and roll baby!👍👍👍', null, null, true),
             Post('Jerome Bell', 'images/jerome.png', '2:20 PM', 'Bring in the Russian money pls. Comes\n with Vodka💉🍅🍹', null, null, true),
             Post('Albert Flores', 'images/albert.png', '2:24 PM', 'Let\'s make a call here. Dictatorship. Can\'t\n decide by committee. It\'s ok either way guys.', null, null, true)]),
-      Stock('Twitter', 'images/twitter.png', 'Dianne Russell: Sell my October 1400 an...', -1.4, 3, 567.73, 20754, null),
-      Stock('Testla', 'images/tesla.png', 'Ronald Richards: Tesla Accusses Rivian of...', -1.4, 0, 567.73, 20754, null),
-      Stock('Facebook', 'images/facebook.png', 'Albert Flores: Wow, after listening to the...', -1.4, 0, 567.73, 20754, null),
+      Stock('Twitter', 'images/twitter.png', 'Dianne Russell: Sell my October 1400 an...', -1.4, 3, 567.73, 20754, []),
+      Stock('Testla', 'images/tesla.png', 'Ronald Richards: Tesla Accusses Rivian of...', -1.4, 0, 567.73, 20754, []),
+      Stock('Facebook', 'images/facebook.png', 'Albert Flores: Wow, after listening to the...', -1.4, 0, 567.73, 20754, []),
     ];
   }
 
