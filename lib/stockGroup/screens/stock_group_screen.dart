@@ -56,7 +56,7 @@ class _StockGroupScreenState extends State<StockGroupScreen> {
 
     widget.stock.posts.forEach((post) {
       if(post.unread == false) {
-        postWidgets.add(PostItem(post: post,));
+        postWidgets.add(PostItem(post: post, showReactions: true,));
       }
     });
 
@@ -86,7 +86,7 @@ class _StockGroupScreenState extends State<StockGroupScreen> {
     List<PostItem> postWidgets = [];
     widget.stock.posts.forEach((post) {
       if(post.unread == true) {
-        postWidgets.add(PostItem(post: post,));
+        postWidgets.add(PostItem(post: post, showReactions: true,));
       }
     });
 
