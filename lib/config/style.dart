@@ -23,4 +23,8 @@ class TextStyles {
   static const TextStyle greenText = const TextStyle(
     color: Colors.green,
   );
+
+  static const TextStyle redText = const TextStyle(
+    color: Colors.redAccent,
+  );
 }
