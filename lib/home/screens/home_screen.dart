@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stonks_app/config/style.dart';
+import 'package:stonks_app/home/models/post.dart';
 import 'package:stonks_app/home/models/stock.dart';
 import 'package:stonks_app/home/widgets/customAppBar.dart';
 import 'package:stonks_app/home/widgets/customBottomNavBar.dart';
 import 'package:stonks_app/home/widgets/portfolioItem.dart';
+import 'package:stonks_app/home/widgets/postItem.dart';
 import 'package:stonks_app/home/widgets/stackedChart.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -26,6 +28,8 @@ class HomeScreen extends StatelessWidget {
           _buyingPower(),
           _buildPortfolioHeader(),
           _getPortofolio(),
+          _buildTopPostHeader(),
+          _getTopPosts(),
         ],
       ),
     );
@@ -165,6 +169,33 @@ class HomeScreen extends StatelessWidget {
       Stock('Twitter', 'images/twitter.png', 'Dianne Russell: Sell my October 1400 an...', -1.4, 3, 567.73, 20754, null),
       Stock('Testla', 'images/tesla.png', 'Ronald Richards: Tesla Accusses Rivian of...', -1.4, 0, 567.73, 20754, null),
       Stock('Facebook', 'images/facebook.png', 'Albert Flores: Wow, after listening to the...', -1.4, 0, 567.73, 20754, null),
+    ];
+  }
+
+  _buildTopPostHeader() {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        child: Text('Top Posts', style: TextStyles.blackBoldText,),
+      ),
+    );
+  }
+
+  Column _getTopPosts() {
+    List<Post> topPosts = _populateTopPosts();
+    List<Widget> postItems = [];
+
+    topPosts.forEach((post) {
+      postItems.add(PostItem(post: post,));
+    });
+
+    return Column(children: postItems,);
+  }
+
+  List<Post> _populateTopPosts() {
+    return [
+      Post('Arlene McCoy', '2:18 PM', 'Tech stocks up 5% holy\n moly *&^*&^*&^. What a\n time to be alive. '
+          'Who cares\n if its a bubble? Ride and roll\n baby!👍👍👍', null, null, null)
     ];
   }
 }
