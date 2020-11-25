@@ -3,6 +3,10 @@ import 'package:flutter/cupertino.dart';
 
 class TextStyles {
 
+  static const TextStyle whiteText = const TextStyle(
+    color: Colors.white,
+  );
+
   static const TextStyle blackText = const TextStyle(
       color: Colors.black,
   );
