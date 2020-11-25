@@ -167,7 +167,7 @@ class HomeScreen extends StatelessWidget {
     return [
       Stock('PayPal', 'images/paypal.png', 'Brooklyn Simmons: Just confirming that...', 3.6, 5, 243.66, 18923,
           [Post('Annette Black', 'images/annette.png', '7:56 AM', 'Interesting. Maybe I\'ll try again. '
-              'I figured\n paypal was dead just waiting for someone to admit it.', null, null, false),
+              'I figured paypal was dead just waiting for someone to admit it.', null, null, false),
             Post('Ronald Richards', 'images/ronald.png', '8:09 AM', 'Especially these days', null, null, false),
             Post('Arlene McCoy', 'images/arlene.png', '2:18 PM', 'Tech stocks up 5% holy\n moly *&^*&^*&^. What a\n time to be alive. '
                 'Who cares\n if its a bubble? Ride and roll\n baby!👍👍👍', null, null, true),
@@ -201,8 +201,8 @@ class HomeScreen extends StatelessWidget {
 
   List<Post> _populateTopPosts() {
     return [
-      Post('Arlene McCoy', 'images/arlene.png', '2:18 PM', 'Tech stocks up 5% holy\n moly *&^*&^*&^. What a\n time to be alive. '
-          'Who cares\n if its a bubble? Ride and roll\n baby!👍👍👍', null, null, null)
+      Post('Arlene McCoy', 'images/arlene.png', '2:18 PM', 'Tech stocks up 5% holy moly *&^*&^*&^. What a time to be alive. '
+          'Who cares if its a bubble? Ride and roll baby!👍👍👍', null, null, null)
     ];
   }
 }
