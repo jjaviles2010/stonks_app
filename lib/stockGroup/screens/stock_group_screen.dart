@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stonks_app/config/style.dart';
 import 'package:stonks_app/home/models/stock.dart';
 import 'package:stonks_app/home/widgets/postItem.dart';
 import 'package:stonks_app/stockGroup/widgets/stockGroupAppBar.dart';
@@ -47,8 +49,21 @@ class StockGroupScreen extends StatelessWidget {
   }
 
   _buildDivider() {
-    return Divider(
-      color: Colors.redAccent,
+    return Stack(
+      children: [
+        Divider(
+          color: Colors.redAccent,
+          indent: 15,
+          endIndent: 15,
+        ),
+        Center(
+            child: Container(
+              padding: EdgeInsets.only(left: 4, right: 4),
+              color: Colors.grey[50],
+                child: Text('Unread', style: TextStyles.redText,)
+            )
+        ),
+      ],
     );
   }
 
