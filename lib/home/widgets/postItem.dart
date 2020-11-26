@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stonks_app/config/style.dart';
 import 'package:stonks_app/home/models/post.dart';
+import 'package:stonks_app/home/models/reaction.dart';
 import 'package:stonks_app/home/widgets/customImage.dart';
 import 'package:stonks_app/stockGroup/widgets/replayItem.dart';
+import 'package:emoji_picker/emoji_picker.dart';
 
 class PostItem extends StatefulWidget {
   final Post post;
@@ -17,6 +19,7 @@ class PostItem extends StatefulWidget {
 class _PostItemState extends State<PostItem> {
   bool showReplayEditText = false;
   bool showReplayPosts = false;
+  bool showEmojiPicker = false;
   final replayController = TextEditingController();
 
   @override
@@ -67,21 +70,13 @@ class _PostItemState extends State<PostItem> {
       buttonPadding: EdgeInsets.all(0),
       buttonHeight: 2,
       buttonMinWidth: 2,
-      children: <Widget>[
-        IconButton(icon: Icon(Icons.insert_emoticon), onPressed: () {}, color: Colors.grey,),
-        IconButton(icon: Icon(Icons.chat_bubble_outline), onPressed: () {
-          setState(() {
-            if(showReplayPosts == false) {
-              showReplayEditText = true;
-              showReplayPosts = true;
-            } else {
-              showReplayEditText = false;
-              showReplayPosts = false;
-            }
-          });
-        }, color: Colors.grey,)
-      ],
+      children: _buildButtons(),
     ),);
+
+
+    if(showEmojiPicker == true) {
+      reactionsWidgets.add(_buildEmojiPickerWidget());
+    }
 
     if(showReplayPosts == true) {
       reactionsWidgets.addAll(_buildRepliesFields());
@@ -92,6 +87,95 @@ class _PostItemState extends State<PostItem> {
     }
 
     return reactionsWidgets;
+  }
+
+  _buildButtons() {
+    List<Widget> buttons = [];
+
+    widget.post.reactions?.forEach((reaction) {
+      buttons.add(
+        FlatButton(
+          padding: EdgeInsets.only(right: 8, left: 5, top: 5, bottom: 5, ),
+          child: Row(
+            children: <Widget>[
+              Text(reaction.emoji, textScaleFactor: 0.9),
+              Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text(reaction.reactionTimes.toString(), textScaleFactor: 0.9),
+              ),
+            ],
+          ),
+          color: Colors.grey[300],
+          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+          onPressed: () {
+            setState(() {
+              _includeReaction(reaction.emoji, reaction.name);
+            });
+          },
+        ),
+      );
+
+    });
+
+    buttons.add(
+      IconButton(icon: Icon(Icons.insert_emoticon), onPressed: () {
+        setState(() {
+          showEmojiPicker = !showEmojiPicker;
+        });
+      }, color: Colors.grey,),
+    );
+
+    buttons.add(
+        IconButton(icon: Icon(Icons.chat_bubble_outline), onPressed: () {
+          setState(() {
+            showReplayEditText = !showReplayEditText;
+            showReplayPosts = !showReplayPosts;
+          });
+        }, color: Colors.grey,)
+    );
+
+    return buttons;
+  }
+
+  _buildEmojiPickerWidget() {
+      return EmojiPicker(
+        rows: 3,
+        columns: 6,
+        buttonMode: ButtonMode.MATERIAL,
+        recommendKeywords: ["face", "money", 'drink', 'celebration'],
+        numRecommended: 10,
+        onEmojiSelected: (reaction, category) {
+          setState(() {
+            _includeReaction(reaction.emoji, reaction.name);
+            showEmojiPicker = false;
+          });
+        },
+      );
+  }
+
+  _includeReaction(emoji, name) {
+    if(widget.post.reactions == null)
+      widget.post.reactions = [];
+
+    if(widget.post.reactions.any((reaction) => reaction.emoji == emoji)) {
+      widget.post.reactions.forEach((reaction) {
+        if (reaction.emoji == emoji) {
+          reaction.reactionTimes += 1;
+        }
+      });
+    } else {
+      widget.post.reactions.add(Reaction(name, emoji, 1));
+    }
+  }
+
+  _buildRepliesFields() {
+    List<Widget> replies = [Container()];
+
+    widget.post.replies?.forEach((replay) {
+      replies.add(ReplayItem(reply: replay,));
+    });
+
+    return replies;
   }
 
   _buildTextField() {
@@ -147,16 +231,6 @@ class _PostItemState extends State<PostItem> {
   Post _createNewReplay() {
     return
       Post('Ali', 'images/Mask.png', '4:30 PM', replayController.text, null, null, null);
-  }
-
-  _buildRepliesFields() {
-    List<Widget> replies = [Container()];
-
-    widget.post.replies?.forEach((replay) {
-      replies.add(ReplayItem(reply: replay,));
-    });
-
-    return replies;
   }
 
 }

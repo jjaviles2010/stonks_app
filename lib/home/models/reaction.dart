@@ -1,6 +1,7 @@
 class Reaction {
+  String name;
   String emoji;
-  int reactionTimes;
+  int reactionTimes = 0;
 
-  Reaction(this.emoji, this.reactionTimes);
+  Reaction(this.name, this.emoji, this.reactionTimes);
 }
