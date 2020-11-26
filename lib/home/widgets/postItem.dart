@@ -19,6 +19,7 @@ class PostItem extends StatefulWidget {
 class _PostItemState extends State<PostItem> {
   bool showReplayEditText = false;
   bool showReplayPosts = false;
+  bool showReplaySummary = true;
   bool showEmojiPicker = false;
   final replayController = TextEditingController();
 
@@ -53,6 +54,16 @@ class _PostItemState extends State<PostItem> {
                 ),
                 (widget.showReactions == true) ? Wrap(
                   children: _buildReactionsFields(),
+                ) : Container(),
+                (showReplaySummary == true) ? InkWell(
+                  onTap: () {
+                    setState(() {
+                      showReplaySummary = !showReplaySummary;
+                      showReplayEditText = true;
+                      showReplayPosts = true;
+                    });
+                  },
+                  child: Row(children: _buildRepliesSummary(),),
                 ) : Container(),
               ],
             ),
@@ -130,6 +141,7 @@ class _PostItemState extends State<PostItem> {
           setState(() {
             showReplayEditText = !showReplayEditText;
             showReplayPosts = !showReplayPosts;
+            showReplaySummary = !showReplaySummary;
           });
         }, color: Colors.grey,)
     );
@@ -166,6 +178,29 @@ class _PostItemState extends State<PostItem> {
     } else {
       widget.post.reactions.add(Reaction(name, emoji, 1));
     }
+  }
+
+  _buildRepliesSummary() {
+    List<Widget> replySumaryFields = [Container()];
+
+    final repliesNumb = widget.post.replies?.length ?? 0;
+
+    if(repliesNumb == 0)
+      return replySumaryFields;
+
+    if(repliesNumb < 4) {
+      widget.post.replies?.forEach((reply) {
+        replySumaryFields.add(CustomImage(imageSrc: reply.userImg,));
+      });
+    } else {
+      widget.post.replies?.getRange(0, 3).forEach((reply) {
+        replySumaryFields.add(CustomImage(imageSrc: reply.userImg,));
+      });
+    }
+
+    replySumaryFields.add(Text('$repliesNumb repl${(repliesNumb <= 1) ? 'y' : 'ies'}'));
+
+    return replySumaryFields;
   }
 
   _buildRepliesFields() {
@@ -207,7 +242,7 @@ class _PostItemState extends State<PostItem> {
                 suffixIcon: IconButton(icon: Icon(Icons.send, color: Colors.grey,), onPressed: () {
                   setState(() {
                     _includeReplay();
-                    showReplayEditText = false;
+                    showReplaySummary = false;
                   });
                 },),
               ),
