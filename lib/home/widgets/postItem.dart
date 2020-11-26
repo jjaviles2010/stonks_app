@@ -182,6 +182,8 @@ class _PostItemState extends State<PostItem> {
 
   _buildRepliesSummary() {
     List<Widget> replySumaryFields = [Container()];
+    List<Widget> images = [];
+    var leftMargin = 0.0;
 
     final repliesNumb = widget.post.replies?.length ?? 0;
 
@@ -190,15 +192,62 @@ class _PostItemState extends State<PostItem> {
 
     if(repliesNumb < 4) {
       widget.post.replies?.forEach((reply) {
-        replySumaryFields.add(CustomImage(imageSrc: reply.userImg,));
+        images.add(
+            Positioned(
+              left: leftMargin,
+                child: Container(
+                    decoration: new BoxDecoration(
+                      borderRadius: BorderRadius.circular(25.0),
+                        boxShadow: [
+                          new BoxShadow(
+                            blurRadius: 5.0,
+                            offset: const Offset(3.0, 0.0),
+                            color: Colors.grey[400],
+                          )
+                        ]
+                    ),
+                    child: CustomImage(imageSrc: reply.userImg,)
+                ),
+            ),
+        );
+        leftMargin += 27;
+
       });
+
     } else {
       widget.post.replies?.getRange(0, 3).forEach((reply) {
-        replySumaryFields.add(CustomImage(imageSrc: reply.userImg,));
+        images.add(
+            Positioned(
+              left: leftMargin,
+                child: Container(
+                    decoration: new BoxDecoration(
+                      borderRadius: BorderRadius.circular(25.0),
+                        boxShadow: [
+                          new BoxShadow(
+                            blurRadius: 5.0,
+                            offset: const Offset(3.0, 0.0),
+                            color: Colors.grey[400],
+                          )
+                        ]
+                    ),
+                    child: CustomImage(imageSrc: reply.userImg,)
+                ),
+            ),
+        );
+        leftMargin += 27;
+
       });
     }
 
-    replySumaryFields.add(Text('$repliesNumb repl${(repliesNumb <= 1) ? 'y' : 'ies'}'));
+
+    replySumaryFields.add(Container(
+      height: 40,
+      width: leftMargin+20,
+      child: Stack(
+        children: images,
+      ),
+    ));
+    replySumaryFields.add(Text('$repliesNumb repl${(repliesNumb <= 1) ? 'y' : 'ies'}', style: TextStyles.blueText,));
 
     return replySumaryFields;
   }

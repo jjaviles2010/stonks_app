@@ -24,6 +24,10 @@ class TextStyles {
     color: Colors.green,
   );
 
+  static const TextStyle blueText = const TextStyle(
+    color: Colors.blueAccent,
+  );
+
   static const TextStyle redText = const TextStyle(
     color: Colors.redAccent,
   );
