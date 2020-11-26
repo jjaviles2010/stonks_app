@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
           ),Column(
             children: <Widget>[
               Text('TOTAL \$', style: TextStyles.greyText,),
-              Text('\$330,961%', style: TextStyles.blackBoldText, )
+              Text('\$330,961', style: TextStyles.blackBoldText, )
             ],
           )
         ],
